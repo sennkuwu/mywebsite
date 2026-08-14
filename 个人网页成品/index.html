@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>子扬xv · 把复杂的信息，变成能用的路径</title>
+    <meta
+      name="description"
+      content="子扬xv · AI 产品经理。用 AI 搭建个人效率系统，做高信噪比的信息筛选与内容输出。"
+    />
+    <meta name="theme-color" content="#fafafa" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- 顶部滚动进度条 -->
+    <div class="progress" id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+
+    <!-- 顶部栏 -->
+    <header class="topbar">
+      <div class="brand">
+        <a class="brand-mark" href="#sec-1">子扬<b>xv</b></a>
+        <span class="brand-sub">AI · PRODUCT · BUILDING</span>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn toc-btn" id="toc-btn" type="button" aria-label="打开目录">目录</button>
+        <button class="icon-btn" id="theme-btn" type="button" aria-label="切换深浅色">深色</button>
+      </div>
+    </header>
+
+    <!-- 双栏：侧边栏目录 + 主内容 -->
+    <div class="layout">
+      <aside class="toc" id="toc">
+        <nav aria-label="目录">
+          <p class="toc-label">目录</p>
+          <div class="toc-list" id="toc-list"></div>
+        </nav>
+      </aside>
+
+      <main id="main" class="main">
+        <article class="md" id="md-root"></article>
+        <footer class="site-foot">
+          <span>© 2026 子扬xv</span>
+          <span>一页 Markdown · 纯静态</span>
+        </footer>
+      </main>
+    </div>
+
+    <!-- 移动端目录遮罩 -->
+    <div class="toc-mask" id="toc-mask" hidden></div>
+
+    <!-- ============================================================
+         内容 Markdown（改文字就改这里）
+         # = 分区名（自动进侧边栏目录）
+         ## = 小节（小标题）
+         ============================================================ -->
+    <script type="text/markdown" id="md-source">
+# 01 · 关于我
+
+## 定位
+
+> 把复杂的信息，变成能用的路径。
+
+## 简介
+
+我是子扬，一名 AI 产品经理。我在做的事：把 AI 接进自己的日常工作流——筛选信息、搭系统、写脚本，让每天真正省下时间。
+
+不追新工具，不堆信息。我的原则是先把问题看清楚，再决定做不做、怎么做最省力。
+
+## 我的理念
+
+- **AI 的用武之地**：不是生成内容，而是替人做重复、确定、耗时的劳动，让人有时间做判断。
+- **高信噪比**：信息不是越多越好，能重塑预期的才算数。
+- **人人都是需求工程师**：让 AI 写脚本的关键不是会编程，而是能把需求讲清楚。
+- **做得成才算数**：做不成的方案，讲得再漂亮也是零。
+
+## 里程碑
+
+- **daily-report 每日要闻系统** — Bloomberg 风格全球要闻，每天自动生成，信息可追溯。
+- **Hammerspoon 效率系统** — 没有编程背景，让 AI 写脚本配好了全套窗口快捷键。
+- **这个网站** — 把项目、能力、文章接成一个能用的系统。
+
+---
+
+# 02 · 项目
+
+## daily-report 每日要闻系统
+
+Bloomberg 风格的全球要闻，每天自动生成一份。只收录会重塑预期的大事，找不到就宁缺毋滥。
+
+- 七大模块：今日头条 / 国际 / 大中华 / 市场概览 / 经济日程 / 央行动态 / 今日图表
+- 每条新闻标注来源 + 日期 + 链接，可追溯
+- 时效优先 24 小时内，最多不超过 72 小时
+
+## 信息追踪方案
+
+全球前沿科技与关键引领者的持续追踪体系，建立对世界的理解框架。
+
+- 一手信息优先于二手转述，信息源优先于观点
+- 季度核验链接与账号，清理僵尸账号
+- 所有信息标注时间，快照注明「截至 YYYY-MM」
+
+## AI 效率工具
+
+用 AI 写本地效率脚本。没有编程背景，把需求讲给 Claude Code，一个下午配好了 [Hammerspoon](https://www.hammerspoon.org/) 全局快捷键：
+
+- `Option + V` 显示 / 隐藏 VS Code
+- `Option + ←` / `→` 左右分屏 · `Option + ↑` 全屏 · `Option + ↓` 居中
+- `Option + P` 窗口置顶
+
+---
+
+# 03 · 能力
+
+## 产品与拆解
+
+把模糊的需求拆成可执行的路径，设计工作流与系统。
+
+## 信息筛选
+
+Bloomberg 式要闻系统：一手信息优先，高信噪比。
+
+## AI 自动化
+
+用 Claude Code / Codex 搭工作流、写本地效率脚本、排错迭代。
+
+## 内容创作
+
+把实践沉淀成可复现的经验文档与可传播的推文。
+
+---
+
+# 04 · 文章
+
+## 被 Mac 窗口折腾烦了？我让 AI 写了个脚本，一套快捷键全搞定
+
+`2026.08.12 · AI 效率`
+
+没有编程背景，把需求讲给 Claude Code，一个下午配好了全套窗口快捷键。最有价值的其实是踩过的 5 个坑：应用名 ≠ 显示名、能藏不能回 = 权限没给、改完不生效要 Reload、重启失效要自启、快捷键会抢别人的键。
+
+## 让 AI 写脚本，我踩的 6 个坑（技术复盘）
+
+`2026.08.12 · 技术复盘`
+
+完整技术复盘：安装步骤、6 个坑的根因与排查命令。核心方法论：把需求讲清楚让 AI 写脚本 + 排错；关键 API 先查文档；一次配一个功能小步验收；按层级排错。
+
+---
+
+# 05 · 联系
+
+想交流 AI 效率工作流、产品想法，或对我的项目感兴趣，欢迎联系。
+
+- **微信**：wsrswx
+- **邮箱**：wsrswx001@outlook.com
+- **X / GitHub**： [子扬xv的github](https://github.com/sennkuwu)
+    </script>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>

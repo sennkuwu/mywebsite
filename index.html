@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>子扬xv · 把复杂的信息，变成能用的路径</title>
+    <meta
+      name="description"
+      content="子扬xv · AI 产品经理。用 AI 搭建个人效率系统，做高信噪比的信息筛选与内容输出。"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- 顶部阅读进度条（细蓝线，随滚动走） -->
+    <div class="progress" id="progress" aria-hidden="true"><i id="progress-bar"></i></div>
+
+    <!-- 顶部信笺条 -->
+    <header class="site-head">
+      <div class="col head-row">
+        <a class="brand" href="#top"
+          >子扬<b>xv</b></a
+        >
+        <span class="head-meta">AI · PRODUCT · BUILDING</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===== Hero ===== -->
+      <section class="hero" id="top">
+        <div class="col">
+          <p class="hero-kicker">AI 产品经理 / 信息筛选 / 效率系统</p>
+          <h1 class="hero-title">
+            把复杂的信息，<br />变成<span class="hl">能用的路径</span>。
+          </h1>
+          <p class="hero-sub">
+            我是子扬。用 AI 搭建个人效率系统——不追新工具，只搭真正省时间的系统。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#me">先认识一下 →</a>
+            <a class="btn" href="#projects">看项目</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 目录式 Tab 导航 ===== -->
+      <nav class="tabs" id="site-tabs" aria-label="内容分类">
+        <div class="col tabs-row">
+          <button class="tab active" type="button" data-tab="me">01 关于我</button>
+          <button class="tab" type="button" data-tab="projects">02 项目</button>
+          <button class="tab" type="button" data-tab="skills">03 能力</button>
+          <button class="tab" type="button" data-tab="articles">04 文章</button>
+          <button class="tab" type="button" data-tab="contact">05 联系</button>
+        </div>
+      </nav>
+
+      <!-- ===== 五个板块层 ===== -->
+      <div class="layers">
+        <section class="layer active" id="layer-me">
+          <div class="col"><div class="panel" id="panel-me"></div></div>
+        </section>
+        <section class="layer" id="layer-projects">
+          <div class="col"><div class="panel" id="panel-projects"></div></div>
+        </section>
+        <section class="layer" id="layer-skills">
+          <div class="col"><div class="panel" id="panel-skills"></div></div>
+        </section>
+        <section class="layer" id="layer-articles">
+          <div class="col"><div class="panel" id="panel-articles"></div></div>
+        </section>
+        <section class="layer" id="layer-contact">
+          <div class="col"><div class="panel" id="panel-contact"></div></div>
+        </section>
+      </div>
+
+      <!-- ===== 文章详情层（hash 路由 #/articles/<slug> 时显示） ===== -->
+      <section class="layer layer-article" id="layer-article" hidden>
+        <div class="col">
+          <button class="back" id="article-back" type="button">← 返回文章列表</button>
+          <article class="article" id="article-body"></article>
+        </div>
+      </section>
+    </main>
+
+    <!-- 极简 footer -->
+    <footer class="site-foot">
+      <div class="col foot-row">
+        <span>© 2026 子扬xv</span>
+        <a class="to-top" href="#top">回到顶部 ↑</a>
+      </div>
+    </footer>
+
+    <!-- 内容数据先行，渲染引擎最后 -->
+    <script src="./js/site-data.js"></script>
+    <script src="./js/articles.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

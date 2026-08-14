@@ -1,0 +1,349 @@
+/* ============================================================
+   style.css — 极简一页 Markdown 文档站
+   ------------------------------------------------------------
+   配色 token 在 :root（浅色）+ [data-theme="dark"]（深色）。
+   改配色改这里，全站自动生效。
+   ============================================================ */
+
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --ink: #18181b;
+  --ink-2: #52525b;
+  --ink-3: #a1a1aa;
+  --border: #e4e4e7;
+  --accent: #2563eb;
+  --accent-soft: #eff6ff;
+  --code-bg: #f4f4f5;
+  --quote-border: #d4d4d8;
+  --mask: rgba(0, 0, 0, 0.4);
+  --topbar-h: 52px;
+}
+
+[data-theme="dark"] {
+  --bg: #0f1115;
+  --surface: #17181c;
+  --ink: #e4e4e7;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --border: #2a2a2e;
+  --accent: #60a5fa;
+  --accent-soft: #16243a;
+  --code-bg: #1e1e23;
+  --quote-border: #3f3f46;
+  --mask: rgba(0, 0, 0, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 顶部滚动进度条 ---------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  pointer-events: none;
+}
+.progress i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+}
+
+/* ---------- 顶部栏 ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.brand-mark {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 16px;
+}
+.brand-mark b {
+  color: var(--accent);
+}
+.brand-sub {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+}
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
+.icon-btn {
+  appearance: none;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.icon-btn:hover {
+  color: var(--ink);
+  border-color: var(--ink-3);
+}
+.toc-btn {
+  display: none;
+}
+
+/* ---------- 双栏布局 ---------- */
+.layout {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ---------- 侧边栏目录 ---------- */
+.toc {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: var(--topbar-h);
+  height: calc(100vh - var(--topbar-h));
+  overflow-y: auto;
+  padding: 36px 20px 40px 8px;
+}
+.toc-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  margin-bottom: 14px;
+}
+.toc-list a {
+  display: block;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+.toc-list a:hover {
+  color: var(--ink);
+  background: var(--code-bg);
+  text-decoration: none;
+}
+.toc-list a.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-left-color: var(--accent);
+}
+
+/* ---------- 主内容 ---------- */
+.main {
+  flex: 1;
+  min-width: 0;
+}
+.md {
+  max-width: 720px;
+  padding: 40px 32px 96px;
+}
+
+/* ---------- Markdown 排版 ---------- */
+.md section {
+  scroll-margin-top: calc(var(--topbar-h) + 16px);
+}
+.md section + section {
+  margin-top: 64px;
+}
+.md h1 {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.3;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+.md h2 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+.md h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+.md p {
+  margin-bottom: 16px;
+  color: var(--ink-2);
+}
+.md a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.md ul,
+.md ol {
+  margin: 0 0 16px 1.5em;
+}
+.md li {
+  margin-bottom: 8px;
+  color: var(--ink-2);
+}
+.md li::marker {
+  color: var(--ink-3);
+}
+.md blockquote {
+  margin: 20px 0;
+  padding: 12px 20px;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 6px 6px 0;
+  color: var(--ink);
+  font-size: 17px;
+}
+.md blockquote p {
+  color: var(--ink);
+  margin-bottom: 0;
+}
+.md code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.md pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+.md pre code {
+  background: none;
+  color: var(--ink);
+  padding: 0;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.md hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* ---------- footer ---------- */
+.site-foot {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-3);
+  font-size: 13px;
+}
+
+/* ---------- 移动端目录抽屉 ---------- */
+.toc-mask {
+  position: fixed;
+  inset: 0;
+  background: var(--mask);
+  z-index: 54;
+}
+.toc-mask.show {
+  display: block;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 860px) {
+  .layout {
+    display: block;
+  }
+  .toc {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    height: auto;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 55;
+    padding-top: 24px;
+  }
+  .toc.open {
+    transform: translateX(0);
+  }
+  .toc-btn {
+    display: block;
+  }
+  .brand-sub {
+    display: none;
+  }
+  .md {
+    padding: 24px 20px 72px;
+  }
+  .md section + section {
+    margin-top: 48px;
+  }
+  .md h1 {
+    font-size: 26px;
+  }
+  .site-foot {
+    padding: 0 20px 32px;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

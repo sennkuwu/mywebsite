@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /mywebsite/
+Sitemap: https://sennkuwu.github.io/mywebsite/sitemap.xml
